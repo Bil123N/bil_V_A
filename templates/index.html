@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/script.js"></script>
+    <script>
+        // Update button text based on assistant active state
+        window.onload = function() {
+            const assistantActive = {{ assistant_active | tojson }};
+            const button = document.getElementById('activate-btn');
+            button.innerText = assistantActive ? 'Deactivate Assistant' : 'Activate Assistant';
+            logoImg = document.getElementById('robotImg');
+            logoImg.src = assistantActive ? "static/img/chatbot_2.png" : "static/img/chatbot_4.png";if (assistantActive === true) {
+                logoImg.classList.remove('inactive');
+                logoImg.classList.remove('active2');
+                logoImg.classList.add('active');
+            } else {
+                logoImg.classList.remove('active');
+                logoImg.classList.remove('active2');
+                logoImg.classList.add('inactive');
+            }
+            robotStatus = document.getElementById('robotStatus');
+            robotStatus.innerText = assistantActive ? 'On' : 'Off';
+        };
+    </script>
+</head>
+<body>
+    <h1>V<span class="blueSpan">O</span>ICE A<span class="redSpan">SS</span>IST<span class="greenSpan">ANT</span></h1>
+    <div class="theCenter">
+        <div class="container">
+            <div class="containerHide">
+                <div class="card" id="card1">
+                    <p class="topImg" onclick="showCard()">
+                        <img class="topImg2" id="robotImg" src="static/img/chatbot_4.png" alt="robot logo">
+                    </p>
+
+                    <div class="content" id="content1">
+                            <h2>Ai</h2>
+                            <h3>Robot Power: <span id="robotStatus"></span> </h3>
+                            <a class="btn" href="#">
+                                <button id="activate-btn" onclick="toggleAssistant()">Activate Assistant</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="container">
+                <div class="card2">
+                    <div class="content2">
+                        <h2>B.N</h2>
+                        <p id="Result"></p>
+                        <p id="Result2"></p>
+                        <div id="output"></div> <!-- Output will be displayed here -->
+                        <a href="#">
+                            <button class="btn2" onclick="clearOutput()">Clear Text</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script type="text/javascript" src="static/vanilla-tilt.js"></script>
+</body>
+</html>
