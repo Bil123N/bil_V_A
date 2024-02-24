@@ -86,6 +86,3 @@ def activate_assistant_route():
 def deactivate_assistant_route():
     assistant = Assistant()  # Create a new instance for each request
     return assistant.deactivate_assistant()
-
-if __name__ == '__main__':
-    app.run(debug=True)
